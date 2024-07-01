@@ -11,5 +11,5 @@ public:
 
 protected:
 	void PlayHitSound();
-	void HitEffect(GameObject* enemy) override;
+	void HitEffect(CollisionData* collisionData) override;
 };

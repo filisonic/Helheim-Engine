@@ -27,7 +27,6 @@ Machinegun::Machinegun()
 	mDamage = 2.0f;
 	mAttackDuration = 0.7f;
     mAttackCooldown = 0.3f;
-    mNumBullets = 3;
 
     mShootDuration = mAttackDuration / static_cast<float>(mNumBullets);
 
@@ -42,13 +41,11 @@ Machinegun::~Machinegun()
 {
 }
 
-void Machinegun::Enter()
+void Machinegun::AttackUpdate(float time)
 {
-    //CONTROLLER VIBRATION
-    App->GetInput()->SetGameControllerRumble(40000, 0, 100);
 }
 
-void Machinegun::Attack(float time)
+void Machinegun::AttackEnter()
 {
     LOG("MachineGun Attack");
 
@@ -115,17 +112,14 @@ void Machinegun::Attack(float time)
         }
 
     }
+
+    //CONTROLLER VIBRATION
+    App->GetInput()->SetGameControllerRumble(40000, 0, 100);
 }
 
-void Machinegun::Exit()
+void Machinegun::AttackExit()
 {
     mFirstShoot = true;
-}
-
-void Machinegun::Reload()
-{
-    mCurrentAmmo = mMaxAmmo;
-    GameManager::GetInstance()->GetHud()->SetAmmo(mCurrentAmmo);
 }
 
 void Machinegun::PlayHitSound()

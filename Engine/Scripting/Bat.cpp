@@ -1,15 +1,16 @@
 #include "Bat.h"
 #include "Application.h"
+#include "AudioManager.h"
+#include "GameManager.h"
+#include "GameObject.h"
+#include "BoxColliderComponent.h"
 #include "Enemy.h"
 #include "ScriptComponent.h"
-#include "GameObject.h"
 
 Bat::Bat(BoxColliderComponent* collider, TrailComponent* trail) : MeleeWeapon(collider, trail)
 {
     mDamage = 4.0f;
-    mCombo1st = 1.0f;
-    mCombo2nd = 0.4f;
-    mComboEnd = 0.4f;
+    mAttackCooldown = 0.75;
 }
 
 Bat::~Bat()
@@ -18,15 +19,14 @@ Bat::~Bat()
 
 void Bat::PlayHitSound()
 {
+    GameManager::GetInstance()->GetAudio()->PlayOneShot(SFX::MEELEE,
+        GameManager::GetInstance()->GetPlayer()->GetWorldPosition(),
+        { { "Speed", 8.0f } }
+    );
 }
 
-void Bat::HitEffect(GameObject* enemy)
+void Bat::HitEffect(CollisionData* collisionData)
 {
-    Enemy* enemyScript = reinterpret_cast<Enemy*>(reinterpret_cast<ScriptComponent*>(enemy->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
-    if (enemyScript)
-    {
-        enemyScript->TakeDamage(mDamage);
-    }
     LOG("apply special effects bat");
 }
 

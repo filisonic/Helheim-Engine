@@ -44,13 +44,13 @@ Pistol::~Pistol()
 {
 }
 
-void Pistol::Enter()
+void Pistol::AttackEnter()
 {
     //CONTROLLER VIBRATION
     App->GetInput()->SetGameControllerRumble(45000, 0, 100);
 }
 
-void Pistol::Attack(float time)
+void Pistol::AttackUpdate(float time)
 {
     LOG("Pistol Attack");
     
@@ -115,17 +115,11 @@ void Pistol::Attack(float time)
     }
 }
 
-void Pistol::Reload()
-{
-    mCurrentAmmo = mMaxAmmo;
-    GameManager::GetInstance()->GetHud()->SetAmmo(mCurrentAmmo);
-}
-
 void Pistol::PlayHitSound()
 {
     GameManager::GetInstance()->GetAudio()->PlayOneShot(SFX::GUNFIRE, GameManager::GetInstance()->GetPlayer()->GetWorldPosition());
 }
 
-void Pistol::Exit()
+void Pistol::AttackExit()
 {
 }

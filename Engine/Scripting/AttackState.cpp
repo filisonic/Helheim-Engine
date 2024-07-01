@@ -24,12 +24,6 @@ StateType AttackState::HandleInput()
     mAttackTimer += App->GetDt();
     if (mAttackTimer < mWeapon->GetAttackDuration())
     {
-        // MOVE TO WEAPON
-        /* if (mWeapon->GetType() == Weapon::WeaponType::MELEE and
-            App->GetInput()->GetMouseKey(MouseKey::BUTTON_LEFT) == KeyState::KEY_DOWN)
-        {
-            reinterpret_cast<MeleeWeapon*>(mWeapon)->IncreaseComboStep();
-        } */
         return StateType::ATTACK;
     }
        
@@ -38,7 +32,7 @@ StateType AttackState::HandleInput()
 
 void AttackState::Update()
 {
-    mWeapon->Attack(mAttackTimer);
+    mWeapon->AttackUpdate(mAttackTimer);
 }
 
 void AttackState::Enter()
@@ -55,7 +49,7 @@ void AttackState::Enter()
         mPlayerController->SetAnimationSpeed(5.0f);
     }
 
-    mWeapon->Enter();
+    mWeapon->AttackEnter();
 }
 
 void AttackState::Exit()
@@ -70,7 +64,7 @@ void AttackState::Exit()
         mPlayerController->SetAnimationSpeed(1.0f);
     }
 
-    mWeapon->Exit();
+    mWeapon->AttackExit();
     mWeapon = nullptr;
 }
 

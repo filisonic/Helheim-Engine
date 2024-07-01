@@ -7,11 +7,10 @@ public:
 	Pistol();
 	~Pistol();
 
-	void Enter() override;
-	void Attack(float time) override;
-	void Exit() override;
+	void AttackEnter() override;
+	void AttackUpdate(float time) override;
+	void AttackExit() override;
 
-	void Reload() override;
 private:
 	void PlayHitSound();
 

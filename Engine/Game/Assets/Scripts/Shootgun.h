@@ -6,11 +6,12 @@ class Shootgun : public RangeWeapon
 public:
 	Shootgun();
 	~Shootgun();
-	void Enter() override;
-	void Attack(float time) override;
-	void Exit() override;
-	void Reload() override;
+	void AttackEnter() override;
+	void AttackUpdate(float time) override;
+	void AttackExit() override;
 
 private:
 	void PlayHitSound();
+
+	unsigned int numBullets = 10;
 };

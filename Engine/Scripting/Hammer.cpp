@@ -1,16 +1,16 @@
 #include "Hammer.h"
+#include "Application.h"
+#include "AudioManager.h"
+#include "GameManager.h"
+#include "GameObject.h"
+#include "BoxColliderComponent.h"
 #include "Enemy.h"
 #include "ScriptComponent.h"
-#include "GameObject.h"
 
 Hammer::Hammer(BoxColliderComponent* collider, TrailComponent* trail) : MeleeWeapon(collider, trail)
 {
-    mDamage = 7.f;
-    mEnergyCost = 10.f;
-    mCooldownMultiplier = 1.5f;
-    mCombo1st = 2.f;
-    mCombo2nd = 2.f;
-    mComboEnd = 2.f;
+    mDamage = 6.0f;
+    mAttackCooldown = 1.0f;
 }
 
 Hammer::~Hammer()
@@ -19,14 +19,17 @@ Hammer::~Hammer()
 
 void Hammer::PlayHitSound()
 {
+    GameManager::GetInstance()->GetAudio()->PlayOneShot(SFX::MEELEE,
+        GameManager::GetInstance()->GetPlayer()->GetWorldPosition(),
+        { { "Speed", 8.0f } }
+    );
 }
 
-void Hammer::HitEffect(GameObject* enemy)
+void Hammer::HitEffect(CollisionData* collisionData)
 {
-    Enemy* enemyScript = reinterpret_cast<Enemy*>(reinterpret_cast<ScriptComponent*>(enemy->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
+    Enemy* enemyScript = reinterpret_cast<Enemy*>(reinterpret_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
     if (enemyScript)
     {
-        enemyScript->TakeDamage(mDamage);
         enemyScript->PushBack();
     }
 }

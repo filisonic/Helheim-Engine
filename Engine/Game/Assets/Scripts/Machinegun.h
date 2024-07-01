@@ -7,15 +7,15 @@ public:
 	Machinegun();
 	~Machinegun();
 
-	void Enter() override;
-	void Attack(float time) override;
-	void Exit() override;
-	void Reload() override;
+	void AttackEnter() override;
+	void AttackUpdate(float time) override;
+	void AttackExit() override;
+
 private:
 	void PlayHitSound();
 	bool Delay(float delay);
 
-	unsigned int mNumBullets;
+	unsigned int mNumBullets = 3;
 	float mShootDuration;
 	bool mFirstShoot = true;
 	float mTimePassed = 0.0f;

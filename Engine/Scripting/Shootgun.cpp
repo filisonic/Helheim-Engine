@@ -39,20 +39,15 @@ Shootgun::~Shootgun()
 {
 }
 
-void Shootgun::Enter()
+void Shootgun::AttackUpdate(float time)
 {
-    //CONTROLLER VIBRATION
-    App->GetInput()->SetGameControllerRumble(50000, 0, 150);
 }
 
-void Shootgun::Attack(float time)
+void Shootgun::AttackEnter()
 {
     LOG("ShotGun Attack");
-    int numBullets = 10;
 
-    //TODO: Rethink this
-    reinterpret_cast<PlayerController*>(reinterpret_cast<ScriptComponent*>(GameManager::GetInstance()->GetPlayer()->GetComponent(ComponentType::SCRIPT))->GetScriptInstance())->UseEnergy(numBullets);
-   
+    GameManager::GetInstance()->GetPlayerController()->UseEnergy(numBullets);
 
     //Audio
     if (GameManager::GetInstance()->GetAudio())
@@ -64,8 +59,6 @@ void Shootgun::Attack(float time)
     int count = 0;
     for (int i = 0; i < numBullets; ++i)
     {
-        
-
         Ray ray;
         ray.pos = GameManager::GetInstance()->GetPlayer()->GetWorldPosition();
         ray.pos.y++;
@@ -124,17 +117,13 @@ void Shootgun::Attack(float time)
     }
 
 
+    //CONTROLLER VIBRATION
+    App->GetInput()->SetGameControllerRumble(50000, 0, 150);
     LOG("Missed bullets = %i", count);
 }
 
-void Shootgun::Exit()
+void Shootgun::AttackExit()
 {
-}
-
-void Shootgun::Reload()
-{
-    //mCurrentAmmo = mMaxAmmo;
-    //GameManager::GetInstance()->GetHud()->SetAmmo(mCurrentAmmo);
 }
 
 void Shootgun::PlayHitSound()
