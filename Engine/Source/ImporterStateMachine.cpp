@@ -9,20 +9,18 @@
 ResourceStateMachine* Importer::StateMachine::Import(const char* assetsPath, unsigned int uid)
 {
     // Copy assets path into correct library path
-    AnimationStateMachine* newSM = new AnimationStateMachine();
+    AnimationStateMachine* newSM = new AnimationStateMachine(uid);
     newSM->LoadResource(assetsPath);
     ResourceStateMachine* newResource = new ResourceStateMachine(uid, newSM);
 
 	assert(newSM->GetNumStates() > 0);
 
-	const char* libraryFile = EngineApp->GetFileSystem()->GetLibraryFile(uid);
-
-
 	char* fileBuffer = nullptr;
 	int size = App->GetFileSystem()->Load(assetsPath, &fileBuffer);
-	std::string path = App->GetFileSystem()->GetLibraryFile(uid, true);
-	App->GetFileSystem()->Save(path.c_str(), fileBuffer, size);
-	
+	const char* path = App->GetFileSystem()->GetLibraryFile(uid, true);
+	App->GetFileSystem()->Save(path, fileBuffer, size);
+	delete[] fileBuffer;
+	delete[] path;
 
     EngineApp->GetEngineResource()->CreateAssetsMeta(*newResource, assetsPath);
 

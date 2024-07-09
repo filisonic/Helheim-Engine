@@ -28,8 +28,9 @@ ImageComponent::ImageComponent(GameObject* owner, bool active) : Component(owner
 {
 	FillVBO();
 	CreateVAO();
+	SetImage(mResourceId);
 
-	mCanvas = (CanvasComponent*)(FindCanvasOnParents(this->GetOwner())->GetComponent(ComponentType::CANVAS));
+	mCanvas = (CanvasComponent*)(FindCanvasOnParents(GetOwner())->GetComponent(ComponentType::CANVAS));
 }
 
 ImageComponent::ImageComponent(GameObject* owner) : Component(owner, ComponentType::IMAGE) 
@@ -38,7 +39,7 @@ ImageComponent::ImageComponent(GameObject* owner) : Component(owner, ComponentTy
 	CreateVAO();
 
     SetImage(mResourceId);
-	GameObject* canvas = FindCanvasOnParents(this->GetOwner());
+	GameObject* canvas = FindCanvasOnParents(GetOwner());
 	if (canvas!= nullptr)
 	mCanvas = (CanvasComponent*)(canvas->GetComponent(ComponentType::CANVAS));
 
@@ -56,8 +57,9 @@ ImageComponent::ImageComponent(const ImageComponent& original, GameObject* owner
 	FillVBO();
 	CreateVAO();
 
-	mImage = original.mImage;
+	SetImage(original.mResourceId);
 	mResourceId = original.mResourceId;
+	SetImage(mResourceId);
 	mFileName = original.mFileName;
 
 	mColor = original.mColor;
@@ -67,16 +69,28 @@ ImageComponent::ImageComponent(const ImageComponent& original, GameObject* owner
 	mHasDiffuse = original.mHasDiffuse;
 	mMantainRatio = original.mMantainRatio;
 
-	mQuadVBO = original.mQuadVBO;
-	mQuadVAO = original.mQuadVAO;
+	//mQuadVBO = original.mQuadVBO;
+	//mQuadVAO = original.mQuadVAO;
 
-	mCanvas = original.mCanvas;
+	//mCanvas = original.mCanvas;
+	GameObject* canvas = FindCanvasOnParents(GetOwner());
+	if (canvas != nullptr)
+		mCanvas = (CanvasComponent*)(canvas->GetComponent(ComponentType::CANVAS));
+	else
+		canvas = nullptr;
 }
 
 ImageComponent:: ~ImageComponent() 
 {
 	CleanUp();
 	mCanvas = nullptr;
+
+	if (mImage)
+	{
+		App->GetResource()->ReleaseResource(mImage->GetUID());
+	}
+
+	App->GetResource()->ReleaseResource(mResourceId);
 }
 
 GameObject* ImageComponent::FindCanvasOnParents(GameObject* gameObject)
@@ -113,6 +127,7 @@ void ImageComponent::Draw()
 		if (UIImageProgram == 0) return;
 
 		glEnable(GL_BLEND);
+		glDepthMask(GL_TRUE);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glUseProgram(UIImageProgram);
@@ -121,30 +136,83 @@ void ImageComponent::Draw()
 		float4x4 model = float4x4::identity;
 		float4x4 view = float4x4::identity;
 
-		if (mCanvas->GetScreenSpace()) //Ortographic Mode
+		switch (mCanvas->GetRenderSpace())
 		{
-			Transform2DComponent* component = reinterpret_cast<Transform2DComponent*>(GetOwner()->GetComponent(ComponentType::TRANSFORM2D));
-			if (component != nullptr)
+		case RenderSpace::Screen: //Ortographic Mode
 			{
-				model = component->GetGlobalMatrix();
+				Transform2DComponent* component = reinterpret_cast<Transform2DComponent*>(GetOwner()->GetComponent(ComponentType::TRANSFORM2D));
+				if (component != nullptr)
+				{
+					model = component->GetGlobalMatrix();
 
-				//float2 windowSize = ((ScenePanel*)App->GetEditor()->GetPanel(SCENEPANEL))->GetWindowsSize();
-				float2 canvasSize = ((CanvasComponent*)(FindCanvasOnParents(this->GetOwner())->GetComponent(ComponentType::CANVAS)))->GetSize();
+					//float2 windowSize = ((ScenePanel*)App->GetEditor()->GetPanel(SCENEPANEL))->GetWindowsSize();
+					float2 canvasSize = ((CanvasComponent*)(FindCanvasOnParents(this->GetOwner())->GetComponent(ComponentType::CANVAS)))->GetSize();
 
-				model = float4x4::Scale(1 / canvasSize.x * 2, 1 / canvasSize.y * 2, 0) * model;
+					model = float4x4::Scale(1 / canvasSize.x * 2, 1 / canvasSize.y * 2, 0) * model;
 
+				}
+				glEnable(GL_CULL_FACE);
+				break;
 			}
-			glEnable(GL_CULL_FACE);
-		}
-		else //World Mode
-		{
-			const CameraComponent* camera = App->GetCamera()->GetCurrentCamera();
+		case RenderSpace::World: //World Mode
+			{
+				const CameraComponent* camera = App->GetCamera()->GetCurrentCamera();
 
-			proj = camera->GetProjectionMatrix();
-			model = GetOwner()->GetWorldTransform();
-			view = camera->GetViewMatrix();
-			glDisable(GL_CULL_FACE);
+				proj = camera->GetProjectionMatrix();
+				model = GetOwner()->GetWorldTransform();
+				view = camera->GetViewMatrix();
+				glDisable(GL_CULL_FACE);
+				break;
+			}
+		case RenderSpace::Billboard: //World Mode aligned to the camera
+			{
+				const CameraComponent* camera = App->GetCamera()->GetCurrentCamera();
+
+				proj = camera->GetProjectionMatrix();
+				view = camera->GetViewMatrix();
+				float3 pos = GetOwner()->GetWorldPosition();
+				float3 scale = GetOwner()->GetWorldScale();
+				float3x3 scaleMatrix = float3x3::identity;
+				scaleMatrix[0][0] = scale.x;
+				scaleMatrix[1][1] = scale.y;
+				scaleMatrix[2][2] = scale.z;
+
+				float3 norm = camera->GetFrustum().front;
+				float3 up = camera->GetFrustum().up;
+				float3 right = -up.Cross(norm).Normalized();
+				model = { float4(right, 0), float4(up, 0),float4(norm, 0),float4(pos, 1) };
+				model = model * scaleMatrix;
+				//model.Transpose();
+
+				glDisable(GL_CULL_FACE);
+				break;
+			}
+		case RenderSpace::WorldAxisBillboard: //World Mode aligned to the camera
+			{
+				const CameraComponent* camera = App->GetCamera()->GetCurrentCamera();
+
+				proj = camera->GetProjectionMatrix();
+				view = camera->GetViewMatrix();
+				float3 pos = GetOwner()->GetWorldPosition();
+				float3 scale = GetOwner()->GetWorldScale();
+				float3x3 scaleMatrix = float3x3::identity;
+				scaleMatrix[0][0] = scale.x;
+				scaleMatrix[1][1] = scale.y;
+				scaleMatrix[2][2] = scale.z;
+
+				float3 norm = (pos - camera->GetFrustum().pos).Normalized();
+				float3 up = float3::unitY;
+				float3 right = -up.Cross(norm).Normalized();
+				norm = up.Cross(right).Normalized();
+				model = { float4(right, 0), float4(up, 0),float4(norm, 0),float4(pos, 1) };
+				model = model * scaleMatrix;
+				//model.Transpose();
+
+				glDisable(GL_CULL_FACE);
+				break;
+			}
 		}
+
 
 		glBindVertexArray(mQuadVAO);
 
@@ -234,6 +302,11 @@ void ImageComponent::Load(const JsonObject& data, const std::unordered_map<unsig
 
 void ImageComponent::SetImage(unsigned int resourceId) 
 {
+	if (mImage)
+	{
+		App->GetResource()->ReleaseResource(mImage->GetUID());
+	}
+
     mImage = (ResourceTexture*)App->GetResource()->RequestResource(resourceId, Resource::Type::Texture);
 }
 
@@ -311,7 +384,7 @@ void ImageComponent::CreateVAO()
 void ImageComponent::ResizeByRatio()
 {
 	float originalRatio = mImage->GetWidth() / mImage->GetHeight() ;
-	if (mCanvas->GetScreenSpace()) //Ortographic Mode
+	if (mCanvas->GetRenderSpace() == RenderSpace::Screen) //Ortographic Mode
 	{
 		Transform2DComponent* component = ((Transform2DComponent*)GetOwner()->GetComponent(ComponentType::TRANSFORM2D));
 		float currentRatio = component->GetSize().x / component->GetSize().y;
@@ -347,5 +420,6 @@ bool ImageComponent::CleanUp()
 {
 	glDeleteBuffers(1, &mQuadVBO);
 	glDeleteVertexArrays(1, &mQuadVAO);
+	App->GetResource()->ReleaseResource(mResourceId);
 	return true;
 }
