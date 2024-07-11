@@ -69,31 +69,28 @@ void Pistol::AttackUpdate(float time)
     
     GameManager::GetInstance()->GetHud()->SetAmmo(mCurrentAmmo);
 
-    std::multiset<Hit> hits;
-
     Ray ray;
     ray.pos = GameManager::GetInstance()->GetPlayer()->GetWorldPosition();
     ray.pos.y++;
     ray.dir = GameManager::GetInstance()->GetPlayer()->GetFront();
 
     float distance = 100.0f;
-    Physics::Raycast(hits, ray, distance);
 
-    if (!hits.empty())
+    Hit hit;
+    Physics::Raycast(hit, ray, distance);
+
+    if (!hit.IsValid())
     {
-        for (const Hit& hit : hits)
+        if (hit.mGameObject->GetTag() == "Enemy")
         {
-            if (hit.mGameObject->GetTag().compare("Enemy") == 0)
-            {
-                LOG("Enemy %s has been hit at distance: %f", hits.begin()->mGameObject->GetName().c_str(), hits.begin()->mDistance);
+            LOG("Enemy %s has been hit at distance: %f", hit.mGameObject->GetName().c_str(), hit.mDistance);
 
-                Enemy* enemy = reinterpret_cast<Enemy*>(((ScriptComponent*)hit.mGameObject->GetComponentInParent(ComponentType::SCRIPT))->GetScriptInstance());
-                if (enemy)
-                {
-                    enemy->TakeDamage(mDamage);
-                }
+            Enemy* enemy = reinterpret_cast<Enemy*>(((ScriptComponent*)hit.mGameObject->GetComponentInParent(ComponentType::SCRIPT))->GetScriptInstance());
+            if (enemy)
+            {
+                enemy->TakeDamage(mDamage);
             }
-        }
+        }      
     }
 
     //PARTICLES

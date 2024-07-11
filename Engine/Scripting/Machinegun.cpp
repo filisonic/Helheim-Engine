@@ -41,10 +41,6 @@ Machinegun::~Machinegun()
 {
 }
 
-void Machinegun::AttackUpdate(float time)
-{
-}
-
 void Machinegun::AttackEnter()
 {
     LOG("MachineGun Attack");
@@ -58,7 +54,7 @@ void Machinegun::AttackEnter()
    
     if (Delay(delay))
     {
-        reinterpret_cast<PlayerController*>(reinterpret_cast<ScriptComponent*>(GameManager::GetInstance()->GetPlayer()->GetComponent(ComponentType::SCRIPT))->GetScriptInstance())->UseEnergy(mNumBullets);
+        GameManager::GetInstance()->GetPlayerController()->UseEnergy(mNumBullets);
         //Audio
         if (GameManager::GetInstance()->GetAudio())
         {
@@ -91,7 +87,6 @@ void Machinegun::AttackEnter()
         }
 
         //PARTICLES
-
         if (mFire)
         {
             mFire->SetEnabled(false);
@@ -116,6 +111,12 @@ void Machinegun::AttackEnter()
     //CONTROLLER VIBRATION
     App->GetInput()->SetGameControllerRumble(40000, 0, 100);
 }
+
+
+void Machinegun::AttackUpdate(float time)
+{
+}
+
 
 void Machinegun::AttackExit()
 {

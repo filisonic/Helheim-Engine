@@ -30,11 +30,6 @@ StateType AttackState::HandleInput()
     return StateType::AIM;
 }
 
-void AttackState::Update()
-{
-    mWeapon->AttackUpdate(mAttackTimer);
-}
-
 void AttackState::Enter()
 {
     mAttackTimer = 0.0f;
@@ -50,6 +45,11 @@ void AttackState::Enter()
     }
 
     mWeapon->AttackEnter();
+}
+
+void AttackState::Update()
+{
+    mWeapon->AttackUpdate(mAttackTimer);
 }
 
 void AttackState::Exit()

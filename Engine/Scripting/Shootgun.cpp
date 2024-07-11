@@ -39,10 +39,6 @@ Shootgun::~Shootgun()
 {
 }
 
-void Shootgun::AttackUpdate(float time)
-{
-}
-
 void Shootgun::AttackEnter()
 {
     LOG("ShotGun Attack");
@@ -104,8 +100,6 @@ void Shootgun::AttackEnter()
             bulletScript->Init(ray.pos, ray.dir, 1.0f, 1.0f, &gradient);
         }
 
-
-
     }
     
     //PARTICLES
@@ -120,6 +114,10 @@ void Shootgun::AttackEnter()
     //CONTROLLER VIBRATION
     App->GetInput()->SetGameControllerRumble(50000, 0, 150);
     LOG("Missed bullets = %i", count);
+}
+
+void Shootgun::AttackUpdate(float time)
+{
 }
 
 void Shootgun::AttackExit()

@@ -48,17 +48,17 @@ void MeleeWeapon::AttackEnter()
         case 0:
             mDamage = 1.0f;
             // Size of collider and other combo step related changes
-            //mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
+            mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
             break;
         case 1:
             mDamage = 1.5f;
             // Size of collider and other combo step related changes
-            //mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
+            mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
             break;
         case 2:
             mDamage = 2.0f;
             // Size of collider and other combo step related changes
-            //mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
+            mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
             break;
     }
 
