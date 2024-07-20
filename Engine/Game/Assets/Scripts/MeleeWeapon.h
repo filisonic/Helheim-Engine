@@ -1,5 +1,6 @@
 #pragma once
 #include "Weapon.h"
+#include "TimerScript.h"
 
 class TrailComponent;
 class BoxColliderComponent;
@@ -17,6 +18,8 @@ public:
 	void AttackUpdate(float time) override;
 	void AttackExit() override;
 
+	void OnClick();
+
 	void OnCollisionEnter(CollisionData* collisionData);
 
 protected:
@@ -28,10 +31,14 @@ protected:
 	BoxColliderComponent* mCollider = nullptr;
 	TrailComponent* mTrail = nullptr;
 
-	int mComboStep = 0;
+	TimerScript mTimeDelay;
 
-	float mComboEndTimer = 0.0f;
-	float mComboEndDuration = 1.0f;
+	int mComboStep = 0;
+	
+	float mLastTimeClicked = 0.0f;
+
+	float mComboEndTime = 5.0f;
+	float mComboNextTime = 1.0f;
 
 	GameObject* mPlayerGO = nullptr;
 	PlayerController* mPlayerController = nullptr;

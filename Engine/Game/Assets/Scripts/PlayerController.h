@@ -126,6 +126,8 @@ public:
     SpecialState* GetSpecialState() { return mSpecialState; }
     ReloadState* GetReloadState() { return mReloadState; }
 
+    AnimationComponent* GetAnimationComponent() { return mAnimationComponent; }
+
 private:
     void CheckInput();
     void StateMachine();

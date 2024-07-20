@@ -286,6 +286,8 @@ void AnimationComponent::SendSpineTrigger(const std::string& trigger, float tran
 	//Changed from !mHasSpine to mHasSpine
 	assert(mHasSpine);
 
+	LOG("Change animation from %s to: %s", GetCurrentSpineStateName().c_str(), trigger.c_str());
+
 	std::string currentStateName = GetCurrentSpineStateName();
 
 	for (size_t i = 0; i < mSpineStateMachine->GetNumTransitions(); i++)

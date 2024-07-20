@@ -8,8 +8,11 @@
 #include "ScriptComponent.h"
 #include "GameManager.h"
 #include "PlayerController.h"
+#include "AnimationComponent.h"
 #include "Hammer.h"
 #include "Katana.h"
+
+#include <algorithm>
 
 MeleeWeapon::MeleeWeapon(BoxColliderComponent* collider, TrailComponent* trail) : Weapon()
 {
@@ -32,50 +35,64 @@ MeleeWeapon::~MeleeWeapon()
 }
 
 void MeleeWeapon::AttackEnter()
-{
-    mComboEndTimer += App->GetDt();
-    if (mComboEndTimer >= mComboEndDuration)
-    {
-        mComboStep = 0;
-    }
-    else
-    {
-        mComboStep++;
-    }
-
-    switch (mComboStep)
-    {
-        case 0:
-            mDamage = 1.0f;
-            // Size of collider and other combo step related changes
-            mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
-            break;
-        case 1:
-            mDamage = 1.5f;
-            // Size of collider and other combo step related changes
-            mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
-            break;
-        case 2:
-            mDamage = 2.0f;
-            // Size of collider and other combo step related changes
-            mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
-            break;
-    }
-
+{ 
     if (mCollider) mCollider->GetOwner()->SetEnabled(true);
     if (mTrail) mTrail->SetEnable(true);
+
+    //mPlayerController->SetSpineAnimation("tAttackMelee ", 0.9f);
 
     App->GetInput()->SetGameControllerRumble(0, 45000, 100);
 }
 
 void MeleeWeapon::AttackUpdate(float time)
 {
+   //if (mLastTimeClicked > mComboEndTime)
+   //{
+   //    LOG("Combo 0");
+   //    mComboStep = 0;
+   //}
+   //
+   //if (mLastTimeClicked > mComboNextTime)
+   //{   
+   //    if (App->GetInput()->GetMouseKey(MouseKey::BUTTON_LEFT) == KeyState::KEY_DOWN)
+   //    {
+   //        OnClick();
+   //    }
+   //}
+
+    mLastTimeClicked += App->GetDt();
 }
 
 void MeleeWeapon::AttackExit()
 {
     if (mCollider) mCollider->GetOwner()->SetEnabled(false);
     if (mTrail) mTrail->SetEnable(false);
+}
+
+void MeleeWeapon::OnClick()
+{ 
+    mLastTimeClicked = 0.0f;
+
+    mComboStep++;
+    if (mComboStep == 1)
+    {
+        LOG("Combo 1");
+        mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
+    }
+
+    mComboStep = std::clamp(mComboStep, 0, 3);
+
+    if (mComboStep >= 2 && mPlayerController->GetAnimationComponent()->HasCurrentSpineStateFinished(1.0f))
+    {
+        LOG("Combo 2");
+        mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
+    }
+
+    if (mComboStep >= 3 && mPlayerController->GetAnimationComponent()->HasCurrentSpineStateFinished(1.0f))
+    {
+        LOG("Combo 3");
+        mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
+    }
 }
 
 void MeleeWeapon::OnCollisionEnter(CollisionData* collisionData)
