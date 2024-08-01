@@ -10,7 +10,8 @@
 Katana::Katana(BoxColliderComponent* collider, TrailComponent* trail) : MeleeWeapon(collider, trail)
 {
     mDamage = 2.0f;
-    mAttackCooldown = 0.5f;
+    mAttackDuration = 0.4f;
+    mAttackCooldown = 0.2f;
 }
 
 Katana::~Katana()
@@ -27,9 +28,9 @@ void Katana::PlayHitSound()
 
 void Katana::HitEffect(CollisionData* collisionData)
 {
-    Enemy* enemyScript = reinterpret_cast<Enemy*>(reinterpret_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
+    Enemy* enemyScript = static_cast<Enemy*>(static_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
     if (enemyScript)
     {
-        enemyScript->PushBack();
+        enemyScript->TakeDamage(mDamage);
     }
 }

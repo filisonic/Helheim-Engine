@@ -10,6 +10,7 @@
 Hammer::Hammer(BoxColliderComponent* collider, TrailComponent* trail) : MeleeWeapon(collider, trail)
 {
     mDamage = 6.0f;
+    mAttackDuration = 0.7f;
     mAttackCooldown = 1.0f;
 }
 
@@ -30,7 +31,7 @@ void Hammer::HitEffect(CollisionData* collisionData)
     Enemy* enemyScript = static_cast<Enemy*>(static_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
     if (enemyScript)
     {
-        enemyScript->PushBack();
+        enemyScript->TakeDamage(mDamage);
     }
 }
 

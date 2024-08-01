@@ -36,13 +36,13 @@ Pistol::Pistol() : RangeWeapon()
 	if (mFire)	mFire->SetEnabled(false);
 }
 
-void Pistol::Enter()
+void Pistol::AttackEnter()
 {
 	//CONTROLLER VIBRATION
 	App->GetInput()->SetGameControllerRumble(45000, 0, 100);
 }
 
-void Pistol::Attack(float time)
+void Pistol::AttackUpdate(float time)
 {
 	//Audio
 	if (GameManager::GetInstance()->GetAudio())

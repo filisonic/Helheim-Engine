@@ -13,18 +13,16 @@ public:
 	Weapon();
 	~Weapon();
 
-	virtual void Enter() {}
-	virtual void Attack(float time) = 0;
-	virtual void Exit() {}
+	virtual void AttackEnter() {}
+	virtual void AttackUpdate(float time) = 0;
+	virtual void AttackExit() {}
 
 	WeaponType GetType() { return mType; }
-	int GetCurrentAmmo() { return mCurrentAmmo; }
-	int GetMaxAmmo() { return mMaxAmmo; }
+
 	float GetDamage() { return mDamage; }
-	virtual float GetAttackDuration() = 0;
+	float GetAttackDuration() { return mAttackDuration; }
 	float GetAttackCooldown() { return mAttackCooldown; }
 	
-	void SetCurrentAmmo(int value) { mCurrentAmmo = value; }
 	void SetDamage(float value) { mDamage = value; }
 protected:
 	virtual void PlayHitSound() = 0;
@@ -35,8 +33,5 @@ protected:
 
 	float mAttackCooldown = 0.0f;
 	float mAttackDuration = 0.0f;
-
-	int mCurrentAmmo = 0;
-	int mMaxAmmo = 0;
 };
 

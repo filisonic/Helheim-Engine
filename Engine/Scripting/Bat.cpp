@@ -13,8 +13,8 @@
 Bat::Bat(BoxColliderComponent* collider, TrailComponent* trail) : MeleeWeapon(collider, trail)
 {
     mDamage = 4.0f;
-    mAttackDuration = 2.0f;
-    mAttackCooldown = 0.75;
+    mAttackDuration = 0.7f;
+    mAttackCooldown = 0.5f;
 }
 
 Bat::~Bat()
@@ -31,10 +31,10 @@ void Bat::PlayHitSound()
 
 void Bat::HitEffect(CollisionData* collisionData)
 {
-    Enemy* enemyScript = reinterpret_cast<Enemy*>(reinterpret_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
+    Enemy* enemyScript = static_cast<Enemy*>(static_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
     if (enemyScript)
     {
-        enemyScript->PushBack();
+        enemyScript->TakeDamage(mDamage);
     }
     LOG("apply special effects bat");
 }

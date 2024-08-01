@@ -97,9 +97,6 @@ void Enemy::Update()
     CheckHitEffect();
 }
 
-
-
-
 void Enemy::CheckHitEffect()
 {
     if (mHit)
@@ -111,6 +108,7 @@ void Enemy::CheckHitEffect()
         }
     }
 }
+
 void Enemy::ResetEnemyColor()
 {
 	for (size_t i = 0; i < mMeshComponents.size(); i++)
@@ -120,6 +118,7 @@ void Enemy::ResetEnemyColor()
 		meshComponent->SetBaseColorFactor(mOgColors[i]);
 	}
 }
+
 void Enemy::ActivateEnemy()
 {
 	if (!mBeAttracted)

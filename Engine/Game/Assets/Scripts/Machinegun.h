@@ -7,9 +7,9 @@ public:
 	Machinegun();
 	~Machinegun() {}
 
-	void Enter() override;
-	void Attack(float time) override;
-	void Exit() override;
+	void AttackEnter() override;
+	void AttackUpdate(float time) override;
+	void AttackExit() override;
 private:
 	void PlayHitSound();
 

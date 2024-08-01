@@ -13,37 +13,19 @@ public:
 	MeleeWeapon(BoxColliderComponent* collider, TrailComponent* trail);
 	~MeleeWeapon();
 
-	float GetAttackDuration() override;
-	void IncreaseComboStep();
-
-	void Enter() override;
-	void Attack(float time) override;
-	void Exit() override;
+	void AttackEnter() override;
+	void AttackUpdate(float time) override;
+	void AttackExit() override;
 
 	void OnCollisionEnter(CollisionData* collisionData);
 
 protected:
 	//Methods 
-	virtual void HitEffect(GameObject* enemy) = 0;  
+	virtual void HitEffect(CollisionData* enemy) = 0;
 
 	//Common
 	BoxColliderComponent* mCollider = nullptr;
 	TrailComponent* mTrail = nullptr;
-
-	int mComboStep = 0;
-	int mNextComboStep = 0;
-
-	float mCombo1st = 1.0f;
-	float mCombo2nd = 1.0f;
-	float mComboEnd = 1.0f;
-	float mHitTime = 0.9f;
-	float mMoveSpeed = 0.0f;
-	bool mColliderAtivated = false;
-	bool mHasHitted = false;
-
-	float mLastComboStartTime = 0.0f;
-	bool mMovingForward = false;
-	float totalMoveDistance = 5.0f;
 
 	GameObject* mPlayerGO = nullptr;
 	PlayerController* mPlayerController = nullptr;
@@ -52,9 +34,5 @@ protected:
 	float mRange = 1.0f;
 	float mDamage = 1;
 	int mEnergyCost = 0;
-	float mCooldownMultiplier = 1.0f;
-
-
-
 };
 

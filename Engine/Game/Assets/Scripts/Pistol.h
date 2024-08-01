@@ -7,8 +7,8 @@ public:
 	Pistol();
 	~Pistol() {}
 
-	void Enter() override;
-	void Attack(float time) override;
+	void AttackEnter() override;
+	void AttackUpdate(float time) override;
 	void Reload();
 
 private:

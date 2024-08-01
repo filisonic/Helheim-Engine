@@ -41,28 +41,28 @@ void MeleeWeapon::AttackEnter()
     if (mCollider) mCollider->GetOwner()->SetEnabled(true);
     if (mTrail) mTrail->SetEnable(true);
 
-    //mPlayerController->SetSpineAnimation("tAttackMelee ", 0.9f);
+    mPlayerController->SetSpineAnimation("tAttackMelee ", 0.9f);
 
     App->GetInput()->SetGameControllerRumble(0, 45000, 100);
 }
 
 void MeleeWeapon::AttackUpdate(float time)
 {
-   //if (mLastTimeClicked > mComboEndTime)
-   //{
-   //    LOG("Combo 0");
-   //    mComboStep = 0;
-   //}
-   //
-   //if (mLastTimeClicked > mComboNextTime)
-   //{   
-   //    if (App->GetInput()->GetMouseKey(MouseKey::BUTTON_LEFT) == KeyState::KEY_DOWN)
-   //    {
-   //        OnClick();
-   //    }
-   //}
+    //if (mLastTimeClicked > mComboEndTime)
+    //{
+    //    LOG("Combo 0");
+    //    mComboStep = 0;
+    //}
+    //
+    //if (mLastTimeClicked > mComboNextTime)
+    //{   
+    //    if (App->GetInput()->GetMouseKey(MouseKey::BUTTON_LEFT) == KeyState::KEY_DOWN)
+    //    {
+    //        OnClick();
+    //    }
+    //}
 
-    mLastTimeClicked += App->GetDt();
+    //mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
 }
 
 void MeleeWeapon::AttackExit()
@@ -71,7 +71,7 @@ void MeleeWeapon::AttackExit()
     if (mTrail) mTrail->SetEnable(false);
 }
 
-void MeleeWeapon::OnClick()
+/*void MeleeWeapon::OnClick()
 { 
     mLastTimeClicked = 0.0f;
 
@@ -96,6 +96,7 @@ void MeleeWeapon::OnClick()
         mPlayerController->SetSpineAnimation("tAttackMelee", 0.9f);
     }
 }
+*/
 
 void MeleeWeapon::OnCollisionEnter(CollisionData* collisionData)
 {

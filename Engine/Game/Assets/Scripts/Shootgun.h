@@ -6,8 +6,8 @@ class Shootgun : public RangeWeapon
 public:
 	Shootgun();
 	~Shootgun() {}
-	void Enter() override;
-	void Attack(float time) override;
+	void AttackEnter() override;
+	void AttackUpdate(float time) override;
 
 private:
 	void PlayHitSound();

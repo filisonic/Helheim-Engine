@@ -7,6 +7,7 @@
 #include "PlayerController.h"
 #include "Weapon.h"
 #include "MeleeWeapon.h"
+#include "RangeWeapon.h"
 
 
 AttackState::AttackState(PlayerController* player, float cooldown) : State(player, cooldown)
@@ -20,7 +21,7 @@ AttackState::~AttackState()
 StateType AttackState::HandleInput()
 {
 	if (mPlayerController->GetPlayerLowerState()->GetType() == StateType::DASH) return StateType::AIM;
-	if (mWeapon->GetCurrentAmmo() == 0) return StateType::RELOAD;
+	if (mWeapon->GetType() == Weapon::WeaponType::RANGE && static_cast<RangeWeapon*>(mWeapon)->GetCurrentAmmo() == 0 ) return StateType::RELOAD;
 
 	mAttackTimer += App->GetDt();
 	if (mAttackTimer < mWeapon->GetAttackDuration())
@@ -33,7 +34,7 @@ StateType AttackState::HandleInput()
 
 void AttackState::Update()
 {
-	mWeapon->Attack(mAttackTimer);
+	mWeapon->AttackUpdate(mAttackTimer);
 }
 
 void AttackState::Enter()
@@ -50,7 +51,7 @@ void AttackState::Enter()
 		mPlayerController->SetAnimationSpeed(5.0f);
 	}
 
-	mWeapon->Enter();
+	mWeapon->AttackEnter();
 	mAttackWhenPossible = false;
 }
 
@@ -66,7 +67,7 @@ void AttackState::Exit()
 		mPlayerController->SetAnimationSpeed(1.0f);
 	}
 
-	mWeapon->Exit();
+	mWeapon->AttackExit();
 	mWeapon = nullptr;
 }
 
@@ -78,6 +79,7 @@ StateType AttackState::GetType()
 bool AttackState::IsReady()
 {
 	bool timerReady = false;
+	mWeapon = mPlayerController->GetWeapon();
 
 	if (mStateTimer.DelayWithoutReset(mStateCooldown))
 	{		
@@ -91,18 +93,18 @@ bool AttackState::IsReady()
 		
 		if (timerReady)
 		{
-			if (mPlayerController->GetWeapon()->GetType() == Weapon::WeaponType::RANGE && mPlayerController->GetWeapon()->GetCurrentAmmo() != 0)
+			if (static_cast<RangeWeapon*>(mWeapon)->GetType() == Weapon::WeaponType::RANGE && static_cast<RangeWeapon*>(mWeapon)->GetCurrentAmmo() != 0)
 			{
 				mStateTimer.Reset();
 				return true;
 			}
-			else if (mPlayerController->GetWeapon()->GetType() == Weapon::WeaponType::MELEE)
+			else if (static_cast<RangeWeapon*>(mWeapon)->GetType() == Weapon::WeaponType::MELEE)
 			{
 				mStateTimer.Reset();
 				return true;
 			}
 		}
-		else if (mPlayerController->GetWeapon()->GetType() == Weapon::WeaponType::RANGE && mPlayerController->GetWeapon()->GetCurrentAmmo() != 0)
+		else if (static_cast<RangeWeapon*>(mWeapon)->GetType() == Weapon::WeaponType::RANGE && static_cast<RangeWeapon*>(mWeapon)->GetCurrentAmmo() != 0)
 		{
 			mAttackWhenPossible = true;
 		}
@@ -111,7 +113,7 @@ bool AttackState::IsReady()
 		App->GetInput()->GetGameControllerTrigger(RIGHT_TRIGGER) == ButtonState::BUTTON_REPEAT) && 
 		mPressedAttackTimer.DelayWithoutReset(mAttackPressedCoolDown))
 	{
-			if (mPlayerController->GetWeapon()->GetType() == Weapon::WeaponType::RANGE && mPlayerController->GetWeapon()->GetCurrentAmmo() != 0)
+			if (static_cast<RangeWeapon*>(mWeapon)->GetType() == Weapon::WeaponType::RANGE && static_cast<RangeWeapon*>(mWeapon)->GetCurrentAmmo() != 0)
 			{
 				mPressedAttackTimer.Reset();
 				return true;
@@ -122,7 +124,7 @@ bool AttackState::IsReady()
 		mPressedAttackTimer.Reset();
 		if (timerReady)
 		{
-			if (mPlayerController->GetWeapon()->GetType() == Weapon::WeaponType::RANGE && mPlayerController->GetWeapon()->GetCurrentAmmo() != 0)
+			if (static_cast<RangeWeapon*>(mWeapon)->GetType() == Weapon::WeaponType::RANGE && static_cast<RangeWeapon*>(mWeapon)->GetCurrentAmmo() != 0)
 			{
 				mStateTimer.Reset();
 				return true;

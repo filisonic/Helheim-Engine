@@ -38,13 +38,13 @@ Machinegun::Machinegun()
     }
 }
 
-void Machinegun::Enter()
+void Machinegun::AttackEnter()
 {
     //CONTROLLER VIBRATION
     App->GetInput()->SetGameControllerRumble(40000, 0, 100);
 }
 
-void Machinegun::Attack(float time)
+void Machinegun::AttackUpdate(float time)
 {
     float delay = mShootDuration;
     if (mFirstShoot)
@@ -79,7 +79,7 @@ void Machinegun::Attack(float time)
     }
 }
 
-void Machinegun::Exit()
+void Machinegun::AttackExit()
 {
     mFirstShoot = true;
 }

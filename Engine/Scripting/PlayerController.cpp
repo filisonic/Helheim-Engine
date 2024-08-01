@@ -431,7 +431,7 @@ void PlayerController::SetSpineAnimation(std::string trigger, float transitionTi
 {
     if (mAnimationComponent) 
     {
-        //LOG("Change animation from %s to: %s", mAnimationComponent->GetCurrentSpineStateName().c_str(), trigger.c_str());
+        LOG("Change animation from %s to: %s", mAnimationComponent->GetCurrentSpineStateName().c_str(), trigger.c_str());
         mAnimationComponent->SendSpineTrigger(trigger, transitionTime);
     }
 }
@@ -643,7 +643,7 @@ void PlayerController::CheckOtherTimers()
 
 bool PlayerController::CanReload() const
 {
-    if (mWeapon->GetCurrentAmmo() == mWeapon->GetMaxAmmo()) return false;
+    if (static_cast<RangeWeapon*>(mWeapon)->GetCurrentAmmo() == static_cast<RangeWeapon*>(mWeapon)->GetMaxAmmo()) return false;
 
     return true;
 }

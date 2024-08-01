@@ -36,13 +36,13 @@ Shootgun::Shootgun()
     }
 }
 
-void Shootgun::Enter()
+void Shootgun::AttackEnter()
 {
     //CONTROLLER VIBRATION
     App->GetInput()->SetGameControllerRumble(50000, 0, 150);
 }
 
-void Shootgun::Attack(float time)
+void Shootgun::AttackUpdate(float time)
 {
     //LOG("ShotGun Attack");
    
