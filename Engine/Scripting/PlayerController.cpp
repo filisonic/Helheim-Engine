@@ -92,8 +92,6 @@ CREATE(PlayerController)
     MEMBER(MemberType::FLOAT, mUltimateDamageTick);
     MEMBER(MemberType::FLOAT, mUltimateDamageInterval);
 
-    SEPARATOR("DEBUG MODE");
-    MEMBER(MemberType::BOOL, mGodMode);
 
     END_CREATE;
 }
@@ -655,10 +653,6 @@ void PlayerController::Reload() const
 void PlayerController::CheckDebugOptions()
 {
     const ModuleInput* input = App->GetInput();
-    if (input->GetKey(Keys::Keys_G) == KeyState::KEY_DOWN)
-    {
-        mGodMode = !mGodMode;
-    }
     if (input->GetKey(Keys::Keys_1) == KeyState::KEY_DOWN) 
     {
         RechargeBattery(EnergyType::BLUE);
@@ -765,7 +759,7 @@ void PlayerController::EnableUltimate(bool enable)
 
 void PlayerController::TakeDamage(float damage)
 {
-    if (mLowerState->GetType() == StateType::DASH || mGodMode)
+    if (mLowerState->GetType() == StateType::DASH || GameManager::GetInstance()->IsGodModeActive())
     {
         return;
     }

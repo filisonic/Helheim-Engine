@@ -86,6 +86,11 @@ void GameManager::Update()
     {
         SetPaused(!mPaused, true);
     }
+    if (App->GetInput()->GetKey(Keys::Keys_F1) == KeyState::KEY_DOWN)
+    {
+        ActivateDebugScreen(!mIsDebugScreenActive);
+        mIsDebugScreenActive = !mIsDebugScreenActive;
+    }
 }
 
 void GameManager::Clean()
@@ -111,6 +116,11 @@ void GameManager::SetPaused(bool value, bool screen)
 {
     mPaused = value;
     if (screen) mHudController->SetScreen(SCREEN::PAUSE, mPaused);
+}
+
+void GameManager::ActivateDebugScreen(bool activate)
+{
+    mHudController->SetScreen(SCREEN::DEBUG, activate);
 }
 
 void GameManager::LoadLevel(const char* LevelName)

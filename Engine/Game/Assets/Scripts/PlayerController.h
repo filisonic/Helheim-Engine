@@ -262,9 +262,6 @@ private:
     // Camera
     GameObject* mCamera = nullptr;
 
-    // Debug
-    bool mGodMode = false;
-
     //Hit Effect
     TimerScript  mHitEffectTimer;
     float mHitEffectTime = 0.15f;

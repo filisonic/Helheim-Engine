@@ -42,6 +42,12 @@ public:
     void Victory();
     void GameOver();
 
+    //DEBUG
+    void ActivateDebugScreen(bool activate);
+    bool IsDebugScreenActive() { return mIsDebugScreenActive; }
+    void ActivateGodMode(bool activate) { mGodMode = activate; }
+    bool IsGodModeActive() { return mGodMode; }
+
 private:
     void PrepareAudio();
     void StartAudio();
@@ -64,7 +70,6 @@ private:
 
 
     bool mPaused = false;
-
     bool mController = false;
 
     int mBackgroundAudioID = -1;
@@ -72,4 +77,10 @@ private:
 
     bool mLoadLevel = false;
     const char* mLevelName = nullptr;
+
+    //DEBUG
+    bool mIsDebugScreenActive = false;
+    bool mGodMode = false;
+
+
 };

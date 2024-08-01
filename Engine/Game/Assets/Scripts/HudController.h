@@ -14,11 +14,13 @@ class Sanity;
 class Dialog;
 enum class EnergyType;
 
-enum class SCREEN {
+enum class SCREEN 
+{
     LOAD,
     LOSE,
     WIN,
-    PAUSE
+    PAUSE,
+    DEBUG
 };
 
 GENERATE_BODY(HudController);
@@ -73,6 +75,8 @@ private:
     void OnMainMenuBtnClick();
     void OnMainMenuBtnHoverOn();
     void OnMainMenuBtnHoverOff();
+
+    void OnGodModeButtonClick();
 
 
     // Pause Menu
@@ -144,6 +148,12 @@ private:
     // Dialog
     GameObject* mDialogGO = nullptr;
     Dialog* mDialog = nullptr;
+    
+    //Debug Screen
+    GameObject* mDebugScreen = nullptr;
+    GameObject* mGodModeBtnGO = nullptr;
+    ButtonComponent* mGodModeBtn = nullptr;
+
 
     int mArenaCounter = 0;
 
