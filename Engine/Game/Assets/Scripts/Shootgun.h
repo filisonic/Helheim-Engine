@@ -5,13 +5,10 @@ class Shootgun : public RangeWeapon
 {
 public:
 	Shootgun();
-	~Shootgun();
-	void AttackEnter() override;
-	void AttackUpdate(float time) override;
-	void AttackExit() override;
+	~Shootgun() {}
+	void Enter() override;
+	void Attack(float time) override;
 
 private:
 	void PlayHitSound();
-
-	unsigned int numBullets = 10;
 };

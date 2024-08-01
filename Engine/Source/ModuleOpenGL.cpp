@@ -75,7 +75,7 @@ static void __stdcall OpenGLErrorFunction(GLenum source, GLenum type, GLuint id,
 	case GL_DEBUG_SEVERITY_NOTIFICATION: tmp_severity = "notification"; break;
 	};
 	if(severity == GL_DEBUG_SEVERITY_HIGH || severity == GL_DEBUG_SEVERITY_MEDIUM)
-		LOG("<Source:%s> <Type:%s> <Severity:%s> <ID:%d> <Message:%s>\n", tmp_source, tmp_type, tmp_severity, id, message);
+		LOG("<Source:%s> <Type:%s> <Severity:%s> <ID:%d> <Message:%s>\n", tmp_source, tmp_type, tmp_severity, id, message)
 }
 
 void ModuleOpenGL::BindSceneFramebuffer()
@@ -98,7 +98,7 @@ bool ModuleOpenGL::Init()
 {
 	LOG("Creating Renderer context");
 
-	context = SDL_GL_CreateContext(App->GetWindow()->window);
+	context = SDL_GL_CreateContext(App->GetWindow()->mWindow);
 
 	GLenum err = glewInit();
 	LOG("Using Glew %s", glGetString(GLEW_VERSION));
@@ -473,7 +473,7 @@ update_status ModuleOpenGL::PreUpdate(float dt)
 update_status ModuleOpenGL::PostUpdate(float dt)
 {
 
-	SDL_GL_SwapWindow(App->GetWindow()->window);
+	SDL_GL_SwapWindow(App->GetWindow()->mWindow);
 
 	return UPDATE_CONTINUE;
 }
@@ -850,7 +850,7 @@ void ModuleOpenGL::SetSkybox(unsigned int uid)
 	}
 	if (uid != 0)
 	{
-		mCurrSkyBox = reinterpret_cast<ResourceIBL*>(App->GetResource()->RequestResource(uid, Resource::Type::IBL));
+		mCurrSkyBox = static_cast<ResourceIBL*>(App->GetResource()->RequestResource(uid, Resource::Type::IBL));
 		assert(mCurrSkyBox);
 		glUseProgram(mPbrLightingPassProgramId);
 		glUniform1ui(glGetUniformLocation(mPbrLightingPassProgramId, "numLevels"), log2(std::max(mCurrSkyBox->GetSpecPrefilteredTexSize(), mCurrSkyBox->GetSpecPrefilteredTexSize())));

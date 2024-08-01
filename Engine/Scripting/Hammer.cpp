@@ -27,7 +27,7 @@ void Hammer::PlayHitSound()
 
 void Hammer::HitEffect(CollisionData* collisionData)
 {
-    Enemy* enemyScript = reinterpret_cast<Enemy*>(reinterpret_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
+    Enemy* enemyScript = static_cast<Enemy*>(static_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
     if (enemyScript)
     {
         enemyScript->PushBack();

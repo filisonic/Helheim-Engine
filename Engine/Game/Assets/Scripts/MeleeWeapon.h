@@ -1,6 +1,5 @@
 #pragma once
 #include "Weapon.h"
-#include "TimerScript.h"
 
 class TrailComponent;
 class BoxColliderComponent;
@@ -14,33 +13,48 @@ public:
 	MeleeWeapon(BoxColliderComponent* collider, TrailComponent* trail);
 	~MeleeWeapon();
 
-	void AttackEnter() override;
-	void AttackUpdate(float time) override;
-	void AttackExit() override;
+	float GetAttackDuration() override;
+	void IncreaseComboStep();
 
-	void OnClick();
+	void Enter() override;
+	void Attack(float time) override;
+	void Exit() override;
 
 	void OnCollisionEnter(CollisionData* collisionData);
 
 protected:
-	//Methods
-	virtual void PlayHitSound() = 0;
-	virtual void HitEffect(CollisionData* collisionData) = 0;
+	//Methods 
+	virtual void HitEffect(GameObject* enemy) = 0;  
 
 	//Common
 	BoxColliderComponent* mCollider = nullptr;
 	TrailComponent* mTrail = nullptr;
 
-	TimerScript mTimeDelay;
-
 	int mComboStep = 0;
-	
-	float mLastTimeClicked = 0.0f;
+	int mNextComboStep = 0;
 
-	float mComboEndTime = 5.0f;
-	float mComboNextTime = 1.0f;
+	float mCombo1st = 1.0f;
+	float mCombo2nd = 1.0f;
+	float mComboEnd = 1.0f;
+	float mHitTime = 0.9f;
+	float mMoveSpeed = 0.0f;
+	bool mColliderAtivated = false;
+	bool mHasHitted = false;
+
+	float mLastComboStartTime = 0.0f;
+	bool mMovingForward = false;
+	float totalMoveDistance = 5.0f;
 
 	GameObject* mPlayerGO = nullptr;
 	PlayerController* mPlayerController = nullptr;
+
+	//Specific 
+	float mRange = 1.0f;
+	float mDamage = 1;
+	int mEnergyCost = 0;
+	float mCooldownMultiplier = 1.0f;
+
+
+
 };
 

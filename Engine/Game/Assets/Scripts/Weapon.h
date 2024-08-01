@@ -1,9 +1,10 @@
-#pragma once
+	#pragma once
 
 class Weapon
 {
 public:
-	enum class WeaponType {
+	enum class WeaponType 
+	{
 		RANGE,
 		MELEE,
 		NONE
@@ -12,20 +13,19 @@ public:
 	Weapon();
 	~Weapon();
 
-	virtual void AttackEnter() = 0;
-	virtual void AttackUpdate(float time) = 0;
-	virtual void AttackExit() = 0;
+	virtual void Enter() {}
+	virtual void Attack(float time) = 0;
+	virtual void Exit() {}
 
 	WeaponType GetType() { return mType; }
 	int GetCurrentAmmo() { return mCurrentAmmo; }
 	int GetMaxAmmo() { return mMaxAmmo; }
-	int GetDamage() { return mDamage; }
-
-	float GetAttackDuration() { return mAttackDuration; }
+	float GetDamage() { return mDamage; }
+	virtual float GetAttackDuration() = 0;
 	float GetAttackCooldown() { return mAttackCooldown; }
 	
 	void SetCurrentAmmo(int value) { mCurrentAmmo = value; }
-	void SetDamage(int value) { mDamage = value; }
+	void SetDamage(float value) { mDamage = value; }
 protected:
 	virtual void PlayHitSound() = 0;
 	WeaponType mType = WeaponType::NONE;

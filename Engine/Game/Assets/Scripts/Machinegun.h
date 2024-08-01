@@ -1,22 +1,23 @@
 #pragma once
 #include "RangeWeapon.h"
-
+#include "TimerScript.h"
 class Machinegun : public RangeWeapon
 {
 public:
 	Machinegun();
-	~Machinegun();
+	~Machinegun() {}
 
-	void AttackEnter() override;
-	void AttackUpdate(float time) override;
-	void AttackExit() override;
-
+	void Enter() override;
+	void Attack(float time) override;
+	void Exit() override;
 private:
 	void PlayHitSound();
-	bool Delay(float delay);
 
-	unsigned int mNumBullets = 3;
+	unsigned int mNumBullets;
 	float mShootDuration;
 	bool mFirstShoot = true;
 	float mTimePassed = 0.0f;
+
+	TimerScript mShootTimer;
+
 };

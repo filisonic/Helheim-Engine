@@ -5,11 +5,11 @@ class Pistol : public RangeWeapon
 {
 public:
 	Pistol();
-	~Pistol();
+	~Pistol() {}
 
-	void AttackEnter() override;
-	void AttackUpdate(float time) override;
-	void AttackExit() override;
+	void Enter() override;
+	void Attack(float time) override;
+	void Reload();
 
 private:
 	void PlayHitSound();

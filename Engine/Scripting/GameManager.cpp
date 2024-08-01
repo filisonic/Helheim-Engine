@@ -81,9 +81,10 @@ void GameManager::Update()
 
     HandleAudio();
 
-    if (App->GetInput()->GetKey(Keys::Keys_ESCAPE) == KeyState::KEY_DOWN)
+    if (App->GetInput()->GetKey(Keys::Keys_ESCAPE) == KeyState::KEY_DOWN || 
+        (UsingController() && (App->GetInput()->GetGameControllerButton(ControllerButton::SDL_CONTROLLER_BUTTON_START) == ButtonState::BUTTON_DOWN)))
     {
-        SetPaused(!mPaused);
+        SetPaused(!mPaused, true);
     }
 }
 
@@ -98,13 +99,18 @@ void GameManager::Clean()
 
 PoolManager* GameManager::GetPoolManager() const 
 { 
-    return reinterpret_cast<PoolManager*>(reinterpret_cast<ScriptComponent*>(mPoolManager->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
+    return reinterpret_cast<PoolManager*>(static_cast<ScriptComponent*>(mPoolManager->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
 }
 
-void GameManager::SetPaused(bool value)
+bool GameManager::UsingController() const
+{
+    return App->GetInput()->isGamepadAvailable();
+}
+
+void GameManager::SetPaused(bool value, bool screen)
 {
     mPaused = value;
-    mHudController->SetScreen(SCREEN::PAUSE, mPaused);
+    if (screen) mHudController->SetScreen(SCREEN::PAUSE, mPaused);
 }
 
 void GameManager::LoadLevel(const char* LevelName)

@@ -27,4 +27,9 @@ void Katana::PlayHitSound()
 
 void Katana::HitEffect(CollisionData* collisionData)
 {
+    Enemy* enemyScript = reinterpret_cast<Enemy*>(reinterpret_cast<ScriptComponent*>(collisionData->collidedWith->GetComponent(ComponentType::SCRIPT))->GetScriptInstance());
+    if (enemyScript)
+    {
+        enemyScript->PushBack();
+    }
 }
