@@ -23,6 +23,7 @@ void LoreCollectible::Init()
 void LoreCollectible::Start()
 {
 
+
 	mCollider = static_cast<BoxColliderComponent*>(mGameObject->GetComponent(ComponentType::BOXCOLLIDER));
 	if (mCollider)
 	{
@@ -48,6 +49,12 @@ void LoreCollectible::OnCollisionEnter(CollisionData* collisionData)
 
 	if (collisionGO->GetTag() == "Player" && App->GetInput()->GetKey(Keys::Keys_F) == KeyState::KEY_DOWN ||
 		App->GetInput()->GetGameControllerButton(ControllerButton::SDL_CONTROLLER_BUTTON_A) == ButtonState::BUTTON_DOWN) {
+
+		if (mCanvasGO)
+		{
+			const std::vector<GameObject*> children1 = mCanvasGO->GetChildren();
+
+		}
 
 		//show text 
 

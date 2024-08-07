@@ -8,6 +8,7 @@ class GameObject;
 class BoxColliderComponent;
 class CollisionData;
 class TextComponent;
+class ImageComponent;
 
 class LoreCollectible : public Script
 {
@@ -25,7 +26,9 @@ public:
 private:
 
     BoxColliderComponent* mCollider = nullptr;
-    GameObject* mDescriptionGO = nullptr;
+    GameObject* mCanvasGO = nullptr;
     TextComponent* mLoreText = nullptr;
+    ImageComponent* mImage = nullptr;
+
 };
 

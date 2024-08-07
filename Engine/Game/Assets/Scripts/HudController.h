@@ -100,6 +100,9 @@ private:
     GameObject* mEnergyGO = nullptr;
     GameObject* mEnergyImageGO = nullptr;
     GameObject* mFeedbackGO = nullptr;
+    GameObject* mCollectibleGO = nullptr;
+    GameObject* mCollectibleTextGO = nullptr;
+    GameObject* mCollectibleImageGO = nullptr;
 
     GameObject* mTryAgainBtnGO = nullptr;
     GameObject* mLoseMenuBtnGO = nullptr;
@@ -115,6 +118,8 @@ private:
     SliderComponent* mGrenadeSlider = nullptr;
     SliderComponent* mUltimateSlider = nullptr;
     ImageComponent* mFeedbackImage = nullptr;
+
+
 
     //Boss Health bar
     GameObject* mBossHealthGO = nullptr;
