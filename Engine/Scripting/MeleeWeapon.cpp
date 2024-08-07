@@ -41,8 +41,6 @@ void MeleeWeapon::AttackEnter()
     if (mCollider) mCollider->GetOwner()->SetEnabled(true);
     if (mTrail) mTrail->SetEnable(true);
 
-    mPlayerController->SetSpineAnimation("tAttackMelee ", 0.9f);
-
     App->GetInput()->SetGameControllerRumble(0, 45000, 100);
 }
 
