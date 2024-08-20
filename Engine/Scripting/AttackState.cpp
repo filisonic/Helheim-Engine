@@ -47,7 +47,8 @@ void AttackState::Enter()
 	}
 	else
 	{
-		mPlayerController->SetSpineAnimation("tAttackMeleeFirst", 5.0f);
+		mPlayerController->SetSpineAnimation("tAttackMeleeFirst", 0.01f);
+		mPlayerController->SetAnimationSpeed(2.0f);
 	}
 
 	mWeapon->AttackEnter();

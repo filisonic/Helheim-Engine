@@ -431,7 +431,7 @@ void PlayerController::SetSpineAnimation(std::string trigger, float transitionTi
 {
     if (mAnimationComponent) 
     {
-        LOG("Change animation from %s to: %s", mAnimationComponent->GetCurrentSpineStateName().c_str(), trigger.c_str());
+        //LOG("Change animation from %s to: %s, Time: %f", mAnimationComponent->GetCurrentSpineStateName().c_str(), trigger.c_str(), transitionTime);
         mAnimationComponent->SendSpineTrigger(trigger, transitionTime);
     }
 }

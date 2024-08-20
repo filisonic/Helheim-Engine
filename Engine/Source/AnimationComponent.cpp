@@ -286,7 +286,7 @@ void AnimationComponent::SendSpineTrigger(const std::string& trigger, float tran
 	//Changed from !mHasSpine to mHasSpine
 	assert(mHasSpine);
 
-	LOG("Change animation from %s to: %s", GetCurrentSpineStateName().c_str(), trigger.c_str());
+	LOG("Change animation from %s to: %s, Time: %f", GetCurrentSpineStateName().c_str(), trigger.c_str(), transitionTime);
 
 	std::string currentStateName = GetCurrentSpineStateName();
 
@@ -297,6 +297,8 @@ void AnimationComponent::SendSpineTrigger(const std::string& trigger, float tran
 			ChangeSpineState(mSpineStateMachine->GetTransitionTarget(i), transitionTime);
 		}
 	}
+
+	LOG("Current state after change %s", GetCurrentSpineStateName().c_str());
 }
 
 void AnimationComponent::ChangeSpineState(const std::string& stateName, float transitionTime)
@@ -308,7 +310,6 @@ void AnimationComponent::ChangeSpineState(const std::string& stateName, float tr
 	if (stateIndex < mSpineStateMachine->GetNumStates() /*&& (stateIndex == 0 || stateIndex != mCurrentState)*/)
 	{
 		mCurrentSpineState = stateIndex;
-
 
 		unsigned int resourceAnimation = mSpineStateMachine->GetUID();
 

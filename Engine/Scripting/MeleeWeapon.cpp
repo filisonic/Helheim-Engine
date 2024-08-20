@@ -18,6 +18,7 @@ MeleeWeapon::MeleeWeapon(BoxColliderComponent* collider, TrailComponent* trail) 
 {
     mType = WeaponType::MELEE;
     mCollider = collider;
+
     if (mCollider) 
     {
         mCollider->AddCollisionEventHandler(CollisionEventType::ON_COLLISION_ENTER,

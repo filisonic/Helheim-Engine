@@ -13,8 +13,8 @@
 Bat::Bat(BoxColliderComponent* collider, TrailComponent* trail) : MeleeWeapon(collider, trail)
 {
     mDamage = 4.0f;
-    mAttackDuration = 0.7f;
-    mAttackCooldown = 0.5f;
+    mAttackDuration = 1.0f;
+    mAttackCooldown = 1.0f;
 }
 
 Bat::~Bat()
