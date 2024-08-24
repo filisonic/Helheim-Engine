@@ -164,20 +164,6 @@
                         "ScriptName": "PlayerController",
                         "ScriptVariables": [
                             {
-                                "VariableName": "STATS",
-                                "MemberType": 5
-                            },
-                            {
-                                "VariableName": "mMaxShield",
-                                "MemberType": 1,
-                                "VariableData": 100.0
-                            },
-                            {
-                                "VariableName": "mPlayerSpeed",
-                                "MemberType": 1,
-                                "VariableData": 2.0
-                            },
-                            {
                                 "VariableName": "DASH",
                                 "MemberType": 5
                             },
@@ -195,6 +181,20 @@
                                 "VariableName": "mDashDuration",
                                 "MemberType": 1,
                                 "VariableData": 0.5
+                            },
+                            {
+                                "VariableName": "mDashVFX",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "RANGE",
+                                "MemberType": 5
+                            },
+                            {
+                                "VariableName": "mShootOrigin",
+                                "MemberType": 3,
+                                "VariableData": -1
                             },
                             {
                                 "VariableName": "MELEE",
@@ -284,6 +284,11 @@
                                 "VariableData": -1
                             },
                             {
+                                "VariableName": "mUltimateChargeGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
                                 "VariableName": "mUltimateCooldown",
                                 "MemberType": 1,
                                 "VariableData": 0.0
@@ -292,6 +297,11 @@
                                 "VariableName": "mUltimateDuration",
                                 "MemberType": 1,
                                 "VariableData": 0.0
+                            },
+                            {
+                                "VariableName": "mUltimateChargeDuration",
+                                "MemberType": 1,
+                                "VariableData": 1.0
                             },
                             {
                                 "VariableName": "mUltimatePlayerSlow",
@@ -307,6 +317,11 @@
                                 "VariableName": "mUltimateDamageInterval",
                                 "MemberType": 1,
                                 "VariableData": 0.0
+                            },
+                            {
+                                "VariableName": "mUltimateAimSpeed",
+                                "MemberType": 1,
+                                "VariableData": 1.0
                             },
                             {
                                 "VariableName": "DEBUG MODE",
@@ -4123,6 +4138,11 @@
                                 "VariableData": 839955887
                             },
                             {
+                                "VariableName": "mUltimateSliderGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
                                 "VariableName": "mAmmoGO",
                                 "MemberType": 3,
                                 "VariableData": 1175651600
@@ -4141,6 +4161,16 @@
                                 "VariableName": "mFeedbackGO",
                                 "MemberType": 3,
                                 "VariableData": 344576355
+                            },
+                            {
+                                "VariableName": "mBossHealthGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mBossHealthGradualGO",
+                                "MemberType": 3,
+                                "VariableData": -1
                             },
                             {
                                 "VariableName": "Pause Screen",
@@ -4191,13 +4221,57 @@
                                 "VariableData": 1429416876
                             },
                             {
-                                "VariableName": "Sanity",
+                                "VariableName": "mTryAgainBtnGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mLoseMenuBtnGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mWinMenuBtnGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "Sanity & Dialog",
                                 "MemberType": 5
                             },
                             {
                                 "VariableName": "mSanityGO",
                                 "MemberType": 3,
                                 "VariableData": 948448226
+                            },
+                            {
+                                "VariableName": "mDialogGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "Collectible",
+                                "MemberType": 5
+                            },
+                            {
+                                "VariableName": "mCollectibleScreen",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mCollectibleTextGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mCollectibleContinueBtnGO",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mInteractGO",
+                                "MemberType": 3,
+                                "VariableData": -1
                             }
                         ]
                     }
@@ -9718,6 +9792,30 @@
                                 "VariableName": "mDoor2",
                                 "MemberType": 3,
                                 "VariableData": -1
+                            },
+                            {
+                                "VariableName": "TRAPS",
+                                "MemberType": 5
+                            },
+                            {
+                                "VariableName": "mTrap1",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mTrap2",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mTrap3",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mTrap4",
+                                "MemberType": 3,
+                                "VariableData": -1
                             }
                         ]
                     }
@@ -12590,6 +12688,30 @@
                                 "VariableName": "mDoor2",
                                 "MemberType": 3,
                                 "VariableData": -1
+                            },
+                            {
+                                "VariableName": "TRAPS",
+                                "MemberType": 5
+                            },
+                            {
+                                "VariableName": "mTrap1",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mTrap2",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mTrap3",
+                                "MemberType": 3,
+                                "VariableData": -1
+                            },
+                            {
+                                "VariableName": "mTrap4",
+                                "MemberType": 3,
+                                "VariableData": -1
                             }
                         ]
                     }
@@ -12679,6 +12801,211 @@
                         ]
                     }
                 ]
+            },
+            {
+                "UID": 807269682,
+                "ParentUID": 1,
+                "Name": "LaserfTrap",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.7071068286895752,
+                    0.0,
+                    0.7071068286895752
+                ],
+                "Scale": [
+                    4.0,
+                    2.0,
+                    4.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 17,
+                        "IsEnabled": true,
+                        "Center": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "Size": [
+                            2.0,
+                            2.0,
+                            2.0
+                        ],
+                        "ColliderType": 0,
+                        "FreezeRotation": false
+                    },
+                    {
+                        "ComponentType": 3,
+                        "IsEnabled": true,
+                        "ScriptName": "ElectricTrapController",
+                        "ScriptVariables": [
+                            {
+                                "VariableName": "ACTIVATION PARAMETER",
+                                "MemberType": 5
+                            },
+                            {
+                                "VariableName": "mActivationInterval",
+                                "MemberType": 1,
+                                "VariableData": 8.0
+                            },
+                            {
+                                "VariableName": "mActivationDuration",
+                                "MemberType": 1,
+                                "VariableData": 4.0
+                            },
+                            {
+                                "VariableName": "mIsActive",
+                                "MemberType": 2,
+                                "VariableData": false
+                            },
+                            {
+                                "VariableName": "SIDE EFFECT",
+                                "MemberType": 5
+                            },
+                            {
+                                "VariableName": "mDamageAmount",
+                                "MemberType": 1,
+                                "VariableData": 5.0
+                            },
+                            {
+                                "VariableName": "mSpeedReduction",
+                                "MemberType": 1,
+                                "VariableData": 0.30000001192092898
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "UID": 896245320,
+                "ParentUID": 807269682,
+                "Name": "Cube.001",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    0.0,
+                    0.004999999888241291,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    0.5,
+                    0.004999999888241291,
+                    0.5
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": []
+            },
+            {
+                "UID": 955910517,
+                "ParentUID": 896245320,
+                "Name": "Cube.001",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 0,
+                        "IsEnabled": true,
+                        "MeshID": 951606329,
+                        "MaterialID": 951606334,
+                        "HasSkinning": false,
+                        "PaletteOwner": 0,
+                        "InverseBindMatrices": []
+                    }
+                ]
+            },
+            {
+                "UID": 1527223687,
+                "ParentUID": 1,
+                "Name": "GameObject",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    0.0,
+                    8.678510665893555,
+                    -7.479373931884766
+                ],
+                "Rotation": [
+                    0.41663265228271487,
+                    0.0,
+                    0.0,
+                    0.9090749025344849
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 2,
+                        "IsEnabled": true,
+                        "Position": [
+                            0.0,
+                            8.678510665893555,
+                            -7.479373931884766,
+                            192.0
+                        ],
+                        "Direction": [
+                            0.0,
+                            -0.7575005888938904,
+                            0.6528344750404358,
+                            0.7880107760429382
+                        ],
+                        "Color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.2588190734386444
+                        ],
+                        "Range": 52.0,
+                        "CastShadow": false,
+                        "Bias": 0.000009999999747378752
+                    }
+                ]
             }
         ],
         "NavMeshResource": 0,
@@ -12693,6 +13020,16 @@
             1.0,
             1.0,
             0.05000000074505806
-        ]
+        ],
+        "Fog": {
+            "Color": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "Density": 0.008999999612569809,
+            "HeightFallof": 0.0,
+            "MaxFog": 0.0
+        }
     }
 }
