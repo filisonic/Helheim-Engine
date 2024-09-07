@@ -1,0 +1,240 @@
+{
+    "Scene": {
+        "Name": "vfx_rangedattack1",
+        "GameObjects": [
+            {
+                "UID": 1789615487,
+                "ParentUID": 1,
+                "Name": "GameObject",
+                "isEnabled": true,
+                "Translation": [
+                    -0.32861748337745669,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": 0,
+                "PrefabId": 0,
+                "OverridePrefab": true,
+                "Dynamic": false,
+                "Components": []
+            },
+            {
+                "UID": 1730247187,
+                "ParentUID": 1789615487,
+                "Name": "Rangedshot",
+                "isEnabled": true,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    0.0010000000474974514,
+                    1.0,
+                    1.0
+                ],
+                "Tag": 0,
+                "PrefabId": 0,
+                "OverridePrefab": true,
+                "Dynamic": false,
+                "Components": []
+            },
+            {
+                "UID": 1542424580,
+                "ParentUID": 1730247187,
+                "Name": "bullet",
+                "isEnabled": true,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": 0,
+                "PrefabId": 0,
+                "OverridePrefab": true,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ID": 2069832973,
+                        "ComponentType": 15,
+                        "isEnabled": true,
+                        "Image": 1921222257,
+                        "Delay": 0.0,
+                        "Duration": 5.0,
+                        "Life Time": 0.009999999776482582,
+                        "Emission Rate": 200.0,
+                        "Max Particles": 1,
+                        "Looping": true,
+                        "Stretched Billboard": false,
+                        "Size": {
+                            "Lineal": 5.0,
+                            "isCurve": false,
+                            "Curve": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "Factor": 1.0
+                        },
+                        "Speed": {
+                            "Lineal": 0.0,
+                            "isCurve": false,
+                            "Curve": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "Factor": 1.0
+                        },
+                        "ShapeType": 1,
+                        "ShapeRadius": 0.0,
+                        "ShapeAngle": 0.0,
+                        "ShapeSize": [
+                            1.0,
+                            1.0
+                        ],
+                        "Color Gradient": [
+                            {
+                                "Time": 0.5,
+                                "Color": [
+                                    1.0,
+                                    1.0,
+                                    1.0,
+                                    1.0
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "UID": 1364066174,
+                "ParentUID": 1730247187,
+                "Name": "trail",
+                "isEnabled": true,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": 0,
+                "PrefabId": 0,
+                "OverridePrefab": true,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ID": 1514571792,
+                        "ComponentType": 18,
+                        "isEnabled": true,
+                        "Image": 1756873672,
+                        "Max Points": 1000,
+                        "Min Distance": 0.10000000149011612,
+                        "Max Life Time": 0.30000001192092898,
+                        "Width": {
+                            "Lineal": -1.0,
+                            "isCurve": true,
+                            "Curve": [
+                                0.949999988079071,
+                                0.05000000074505806,
+                                0.7950000166893005,
+                                0.03500000014901161
+                            ],
+                            "Factor": 1.0
+                        },
+                        "Color Gradient": []
+                    }
+                ]
+            },
+            {
+                "UID": 1257999761,
+                "ParentUID": 1730247187,
+                "Name": "trail2",
+                "isEnabled": true,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": 0,
+                "PrefabId": 0,
+                "OverridePrefab": true,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ID": 1262107400,
+                        "ComponentType": 18,
+                        "isEnabled": true,
+                        "Image": 1227853719,
+                        "Max Points": 1000,
+                        "Min Distance": 0.10000000149011612,
+                        "Max Life Time": 0.30000001192092898,
+                        "Width": {
+                            "Lineal": -1.0,
+                            "isCurve": true,
+                            "Curve": [
+                                0.949999988079071,
+                                0.05000000074505806,
+                                0.7950000166893005,
+                                0.03500000014901161
+                            ],
+                            "Factor": 1.0
+                        },
+                        "Color Gradient": []
+                    }
+                ]
+            }
+        ]
+    }
+}

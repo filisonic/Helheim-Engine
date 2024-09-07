@@ -1,0 +1,1013 @@
+{
+    "Scene": {
+        "Name": "VFX_creature_DashAttack",
+        "GameObjects": [
+            {
+                "UID": 522586713,
+                "ParentUID": 1,
+                "Name": "vfx_creature_spawn",
+                "Enabled": false,
+                "Active": false,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": false,
+                        "Size": [
+                            3048.0,
+                            3048.0
+                        ],
+                        "Render": 2
+                    }
+                ]
+            },
+            {
+                "UID": 633946869,
+                "ParentUID": 522586713,
+                "Name": "particles",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    -0.04523373767733574,
+                    -0.011410742066800595,
+                    -0.011826835572719574,
+                    0.9988412261009216
+                ],
+                "Scale": [
+                    0.20000000298023225,
+                    0.3499999940395355,
+                    0.44999998807907107
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": true,
+                "Components": [
+                    {
+                        "ComponentType": 15,
+                        "IsEnabled": false,
+                        "Image": 1227123640,
+                        "Delay": 1.0,
+                        "Duration": 5.0,
+                        "EmissionRate": 3.0,
+                        "MaxParticles": 1000,
+                        "Looping": true,
+                        "StretchedBillboard": true,
+                        "StretchedRatio": 0.0,
+                        "Lifetime": {
+                            "IsValueRandom": false,
+                            "MinValue": 0.20000000298023225,
+                            "MaxValue": 0.4000000059604645
+                        },
+                        "ShapeType": 3,
+                        "ShapeRadius": -0.1899999976158142,
+                        "ShapeAngle": 0.7853981852531433,
+                        "ShapeSize": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "ShapeRandAngle": 0.0,
+                        "ShapeIsRandAngle": false,
+                        "ShapeInvertedDir": false,
+                        "BlendMode": 0,
+                        "SizeCurve": {
+                            "Value": {
+                                "IsValueRandom": true,
+                                "MinValue": 0.20000000298023225,
+                                "MaxValue": 0.30000001192092898
+                            },
+                            "IsCurve": true,
+                            "CurvePoints": [
+                                {
+                                    "Point": [
+                                        0.0,
+                                        0.0
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.1111111119389534,
+                                        0.02469135820865631
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.2222222238779068,
+                                        0.09876543283462525
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.3333333432674408,
+                                        0.222222238779068
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.4444444477558136,
+                                        0.395061731338501
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.5555555820465088,
+                                        0.6049383282661438
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.6666666865348816,
+                                        0.7777777910232544
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.7777777910232544,
+                                        0.9012345671653748
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.8888888955116272,
+                                        0.9753086566925049
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        1.0,
+                                        1.0
+                                    ]
+                                }
+                            ]
+                        },
+                        "SpeedCurve": {
+                            "Value": {
+                                "IsValueRandom": false,
+                                "MinValue": 0.5,
+                                "MaxValue": 1.0
+                            },
+                            "IsCurve": true,
+                            "CurvePoints": [
+                                {
+                                    "Point": [
+                                        0.0,
+                                        0.0
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        1.0,
+                                        1.0
+                                    ]
+                                }
+                            ]
+                        },
+                        "Color Gradient": [
+                            {
+                                "Time": 0.930294394493103,
+                                "Color": [
+                                    0.17600011825561524,
+                                    1.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            },
+                            {
+                                "Time": 0.9839144945144653,
+                                "Color": [
+                                    1.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "UID": 312142394,
+                "ParentUID": 522586713,
+                "Name": "smoke",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": true,
+                "Components": [
+                    {
+                        "ComponentType": 8,
+                        "IsEnabled": false,
+                        "ImageID": 400923988,
+                        "Color": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "Alpha": 1.0,
+                        "ShouldDraw": true,
+                        "IsMaskable": false,
+                        "IsSpritesheet": true,
+                        "Columns": 8,
+                        "Rows": 8,
+                        "Speed": 33,
+                        "IsPlaying": true
+                    }
+                ]
+            },
+            {
+                "UID": 203233580,
+                "ParentUID": 522586713,
+                "Name": "floorpattern",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    0.0,
+                    0.00476183881983161,
+                    0.07969100028276444
+                ],
+                "Rotation": [
+                    0.7071068286895752,
+                    0.0,
+                    0.0,
+                    0.7071067094802856
+                ],
+                "Scale": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": false,
+                        "Size": [
+                            2000.0,
+                            2000.0
+                        ],
+                        "Render": 0
+                    },
+                    {
+                        "ComponentType": 8,
+                        "IsEnabled": false,
+                        "ImageID": 319823124,
+                        "Color": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "Alpha": 0.8370000123977661,
+                        "ShouldDraw": true,
+                        "IsMaskable": false,
+                        "IsSpritesheet": true,
+                        "Columns": 6,
+                        "Rows": 6,
+                        "Speed": 33,
+                        "IsPlaying": true
+                    }
+                ]
+            },
+            {
+                "UID": 656027190,
+                "ParentUID": 1,
+                "Name": "vfx_enemycreature_chargedattack",
+                "Enabled": false,
+                "Active": false,
+                "Translation": [
+                    -0.15742212533950807,
+                    0.0,
+                    0.17363518476486207
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": []
+            },
+            {
+                "UID": 1141018259,
+                "ParentUID": 656027190,
+                "Name": "bleed",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    2.0,
+                    2.0,
+                    2.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": false,
+                        "Size": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "Render": 2
+                    },
+                    {
+                        "ComponentType": 8,
+                        "IsEnabled": false,
+                        "ImageID": 1996807096,
+                        "Color": [
+                            0.9313725233078003,
+                            0.1248813048005104,
+                            0.10044215619564057
+                        ],
+                        "Alpha": 0.7250000238418579,
+                        "ShouldDraw": true,
+                        "IsMaskable": false,
+                        "IsSpritesheet": true,
+                        "Columns": 8,
+                        "Rows": 8,
+                        "Speed": 100,
+                        "IsPlaying": true
+                    }
+                ]
+            },
+            {
+                "UID": 303719042,
+                "ParentUID": 656027190,
+                "Name": "dashtrails",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    0.00031322240829467773,
+                    0.0,
+                    0.06622999906539917
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    40.0,
+                    40.0,
+                    40.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": false,
+                        "Size": [
+                            2000.0,
+                            2000.0
+                        ],
+                        "Render": 3
+                    },
+                    {
+                        "ComponentType": 18,
+                        "IsEnabled": false,
+                        "Image": 1969625949,
+                        "MaxPoints": 1000,
+                        "MinDistance": 0.10000000149011612,
+                        "MaxLifeTime": 0.30000001192092898,
+                        "UVScroll": 1.0,
+                        "IsFixedDirection": false,
+                        "IsUVScrolling": false,
+                        "Direction": [
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        "Width": {
+                            "Value": {
+                                "IsValueRandom": true,
+                                "MinValue": 0.0,
+                                "MaxValue": 6.0
+                            },
+                            "IsCurve": true,
+                            "CurvePoints": [
+                                {
+                                    "Point": [
+                                        0.0,
+                                        0.0
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.1111111119389534,
+                                        0.03015368990600109
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.2222222238779068,
+                                        0.11697778105735779
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.3333333432674408,
+                                        0.25
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.4444444477558136,
+                                        0.41317591071128847
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.5555555820465088,
+                                        0.5868241190910339
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.6666666865348816,
+                                        0.75
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.7777777910232544,
+                                        0.8830222487449646
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        0.8888888955116272,
+                                        0.9698463082313538
+                                    ]
+                                },
+                                {
+                                    "Point": [
+                                        1.0,
+                                        1.0
+                                    ]
+                                }
+                            ]
+                        },
+                        "Gradient": {
+                            "Color Gradient": [
+                                {
+                                    "Time": 0.31099194288253786,
+                                    "Color": [
+                                        0.9959999918937683,
+                                        0.12442822754383087,
+                                        0.031871944665908816,
+                                        1.0
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "UID": 331199257,
+                "ParentUID": 656027190,
+                "Name": "claw1",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    -0.054252803325653079,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    0.30000001192092898,
+                    0.30000001192092898,
+                    0.30000001192092898
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": false,
+                        "Size": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "Render": 1
+                    },
+                    {
+                        "ComponentType": 18,
+                        "IsEnabled": false,
+                        "Image": 1789837093,
+                        "MaxPoints": 1000,
+                        "MinDistance": 0.10000000149011612,
+                        "MaxLifeTime": 0.10000000149011612,
+                        "UVScroll": 1.0,
+                        "IsFixedDirection": true,
+                        "IsUVScrolling": false,
+                        "Direction": [
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        "Width": {
+                            "Value": {
+                                "IsValueRandom": true,
+                                "MinValue": 1.0,
+                                "MaxValue": 3.0
+                            },
+                            "IsCurve": false,
+                            "CurvePoints": []
+                        },
+                        "Gradient": {
+                            "Color Gradient": [
+                                {
+                                    "Time": 0.021447697654366494,
+                                    "Color": [
+                                        0.9480000138282776,
+                                        0.8890268206596375,
+                                        0.0265439972281456,
+                                        1.0
+                                    ]
+                                },
+                                {
+                                    "Time": 0.46648794412612917,
+                                    "Color": [
+                                        0.9679999947547913,
+                                        0.06195200979709625,
+                                        0.06195200979709625,
+                                        1.0
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "UID": 735942848,
+                "ParentUID": 656027190,
+                "Name": "claw2",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    -0.054252803325653079,
+                    0.0,
+                    -0.420331209897995
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    0.30000001192092898,
+                    0.30000001192092898,
+                    0.30000001192092898
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": false,
+                        "Size": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "Render": 1
+                    },
+                    {
+                        "ComponentType": 18,
+                        "IsEnabled": false,
+                        "Image": 1789837093,
+                        "MaxPoints": 1000,
+                        "MinDistance": 0.10000000149011612,
+                        "MaxLifeTime": 0.10000000149011612,
+                        "UVScroll": 1.0,
+                        "IsFixedDirection": true,
+                        "IsUVScrolling": false,
+                        "Direction": [
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        "Width": {
+                            "Value": {
+                                "IsValueRandom": true,
+                                "MinValue": 1.0,
+                                "MaxValue": 3.0
+                            },
+                            "IsCurve": false,
+                            "CurvePoints": []
+                        },
+                        "Gradient": {
+                            "Color Gradient": [
+                                {
+                                    "Time": 0.021447697654366494,
+                                    "Color": [
+                                        0.9480000138282776,
+                                        0.8890268206596375,
+                                        0.0265439972281456,
+                                        1.0
+                                    ]
+                                },
+                                {
+                                    "Time": 0.46648794412612917,
+                                    "Color": [
+                                        0.9679999947547913,
+                                        0.06195200979709625,
+                                        0.06195200979709625,
+                                        1.0
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "UID": 981405072,
+                "ParentUID": 656027190,
+                "Name": "claw3",
+                "Enabled": true,
+                "Active": false,
+                "Translation": [
+                    0.04589167237281799,
+                    0.0,
+                    0.5944658517837524
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    0.30000001192092898,
+                    0.30000001192092898,
+                    0.30000001192092898
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": false,
+                        "Size": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "Render": 1
+                    },
+                    {
+                        "ComponentType": 18,
+                        "IsEnabled": false,
+                        "Image": 1789837093,
+                        "MaxPoints": 1000,
+                        "MinDistance": 0.10000000149011612,
+                        "MaxLifeTime": 0.10000000149011612,
+                        "UVScroll": 1.0,
+                        "IsFixedDirection": true,
+                        "IsUVScrolling": false,
+                        "Direction": [
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        "Width": {
+                            "Value": {
+                                "IsValueRandom": true,
+                                "MinValue": 1.0,
+                                "MaxValue": 3.0
+                            },
+                            "IsCurve": false,
+                            "CurvePoints": []
+                        },
+                        "Gradient": {
+                            "Color Gradient": [
+                                {
+                                    "Time": 0.021447697654366494,
+                                    "Color": [
+                                        0.9480000138282776,
+                                        0.8890268206596375,
+                                        0.0265439972281456,
+                                        1.0
+                                    ]
+                                },
+                                {
+                                    "Time": 0.46648794412612917,
+                                    "Color": [
+                                        0.9679999947547913,
+                                        0.06195200979709625,
+                                        0.06195200979709625,
+                                        1.0
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "UID": 1407977128,
+                "ParentUID": 1,
+                "Name": "vfx_enemy_explosivetrap",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": []
+            },
+            {
+                "UID": 760208529,
+                "ParentUID": 1407977128,
+                "Name": "explosion",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    -0.20788559317588807,
+                    0.36309921741485598,
+                    0.1503511369228363
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    3.0,
+                    3.0,
+                    3.0
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": true,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": true,
+                        "Size": [
+                            1920.0,
+                            1920.0
+                        ],
+                        "Render": 2
+                    },
+                    {
+                        "ComponentType": 8,
+                        "IsEnabled": true,
+                        "ImageID": 128470611,
+                        "Color": [
+                            0.8970588445663452,
+                            0.757378339767456,
+                            0.36937713623046877
+                        ],
+                        "Alpha": 1.0,
+                        "ShouldDraw": true,
+                        "IsMaskable": false,
+                        "IsSpritesheet": true,
+                        "Columns": 8,
+                        "Rows": 8,
+                        "Speed": 16,
+                        "IsPlaying": true
+                    }
+                ]
+            },
+            {
+                "UID": 1558824050,
+                "ParentUID": 1407977128,
+                "Name": "anchordrainage",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    -0.017269402742385865,
+                    -0.020250797271728517,
+                    0.0
+                ],
+                "Rotation": [
+                    0.7071068286895752,
+                    0.0,
+                    0.0,
+                    0.7071067094802856
+                ],
+                "Scale": [
+                    0.699999988079071,
+                    0.699999988079071,
+                    0.699999988079071
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": true,
+                        "Size": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "Render": 0
+                    },
+                    {
+                        "ComponentType": 8,
+                        "IsEnabled": true,
+                        "ImageID": 579843,
+                        "Color": [
+                            0.45588237047195437,
+                            0.36123549938201907,
+                            0.2547577917575836
+                        ],
+                        "Alpha": 0.9150000214576721,
+                        "ShouldDraw": true,
+                        "IsMaskable": false,
+                        "IsSpritesheet": true,
+                        "Columns": 8,
+                        "Rows": 8,
+                        "Speed": 16,
+                        "IsPlaying": true
+                    }
+                ]
+            },
+            {
+                "UID": 1062606794,
+                "ParentUID": 1407977128,
+                "Name": "smoke",
+                "Enabled": true,
+                "Active": true,
+                "Translation": [
+                    -0.003254920244216919,
+                    0.11244402825832367,
+                    0.0
+                ],
+                "Rotation": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "Scale": [
+                    0.699999988079071,
+                    0.699999988079071,
+                    0.699999988079071
+                ],
+                "Tag": "Untagged",
+                "PrefabUid": 0,
+                "OverridePrefab": false,
+                "Dynamic": false,
+                "Components": [
+                    {
+                        "ComponentType": 7,
+                        "IsEnabled": true,
+                        "Size": [
+                            1920.0,
+                            2000.0
+                        ],
+                        "Render": 1
+                    },
+                    {
+                        "ComponentType": 8,
+                        "IsEnabled": true,
+                        "ImageID": 1878234630,
+                        "Color": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "Alpha": 1.0,
+                        "ShouldDraw": true,
+                        "IsMaskable": false,
+                        "IsSpritesheet": true,
+                        "Columns": 8,
+                        "Rows": 8,
+                        "Speed": 21,
+                        "IsPlaying": true
+                    }
+                ]
+            }
+        ],
+        "NavMeshResource": 0,
+        "SkyBoxResource": 458087203,
+        "BloomIntensity": 0.5,
+        "DirectionalLight": [
+            0.0,
+            -1.0,
+            -1.0,
+            0.0,
+            0.6360000371932983,
+            0.0737759992480278,
+            0.0737759992480278,
+            0.05000000074505806
+        ],
+        "Fog": {
+            "Color": [
+                0.373952716588974,
+                0.843999981880188,
+                0.07089599221944809
+            ],
+            "Density": 0.008999999612569809,
+            "HeightFallof": 0.0,
+            "MaxFog": 0.0
+        }
+    }
+}
